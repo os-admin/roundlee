@@ -1,0 +1,14 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run a multi-line script
+        run: |
+          source unit-test.sh
+          echo "TODO: add more testing code here."
