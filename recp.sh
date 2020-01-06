@@ -1,34 +1,14 @@
 #!/usr/bin/env bash
 
 function checkParam() {
-    echo "enter $0 [-d] <file list>";
-    echo "     -d to stdout only";
+    echo "enter recp <file list>";
 }
-
-chose=$1;
-file="";
-isallow=0
 
 case $# in 
     0 ) 
         checkParam;
         exit 1;
     ;;
-
-    1 ) 
-        if [ $chose = "-d" ]
-        then
-            checkParam;
-            exit;
-        fi
-    ;;
-
-    * ) 
-        if [ $chose = "-d" ]
-        then
-            isallow=1;
-            shift;
-        fi
 esac
 
 for f in $*;
@@ -53,7 +33,6 @@ do
     esac
     cat $f;
     echo;
-    # echo -e "\n";
 done |  if [ $isallow -eq 0 ]
         then
             os=`uname -s`;
